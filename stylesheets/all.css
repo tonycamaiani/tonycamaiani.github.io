@@ -496,55 +496,68 @@ body {
   color: rgba(255, 255, 255, .5);
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 50px;
-  letter-spacing: 1px;
-  background: url("../images/y.png") no-repeat center 100px;
-  padding: 350px 0 10px;
-  margin: 0; }
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-
-  margin: 0; }
-
-.doc {
-  font-size: 16px;
-  margin: 20px 0; }
-  .doc:before,
-  .doc:after {
-    opacity: .2;
-    padding: 6px;
-    font-style: normal;
-    position: relative;
-    content: "•"; }
-  .doc a {
-    color: rgba(255, 255, 255, 0.7); }
-    .doc a:hover {
-      color: rgba(255, 255, 255, 1); }
-
-.welcome {
-  -webkit-animation-name: welcome;
-  -webkit-animation-duration: .9s; }
-
-@-webkit-keyframes welcome {
-  from {
-    -webkit-transform: scale(0);
-    opacity: 0;
+  h1, h2 {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0; 
   }
-  50% {
-   -webkit-transform: scale(0);
-   opacity: 0;
+
+  h1 {
+    font-size: 50px;
+    background: url("../images/y.png") no-repeat center 100px;
+    padding: 350px 0 10px;
   }
-  82.5% {
-    -webkit-transform: scale(1.03);
-    -webkit-animation-timing-function: ease-out;
-    opacity: 1;
+
+  h2 {
+    font-size: 24px;
+    line-height: 28px;
   }
-  to {
-    -webkit-transform: scale(1);
+
+  .doc {
+    font-size: 16px;
+    margin: 20px 0; 
   }
-}
+
+    .dotted:before,
+    .dotted:after {
+      opacity: .5;
+      padding: 6px;
+      font-style: normal;
+      position: relative;
+      content: "•"; 
+    }
+    p a {
+      color: rgba(255, 255, 255, 0.7); 
+    }
+      p a:hover {
+        color: rgba(255, 255, 255, 1); 
+      }
+
+    .icons a {
+      font-size: 24px;
+      margin: 0 20px;
+      text-decoration: none;
+    }    
+
+  .welcome {
+    -webkit-animation-name: welcome;
+    -webkit-animation-duration: .9s; }
+
+  @-webkit-keyframes welcome {
+    from {
+      -webkit-transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+     -webkit-transform: scale(0);
+     opacity: 0;
+    }
+    82.5% {
+      -webkit-transform: scale(1.03);
+      -webkit-animation-timing-function: ease-out;
+      opacity: 1;
+    }
+    to {
+      -webkit-transform: scale(1);
+    }
+  }
