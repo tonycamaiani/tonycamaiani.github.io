@@ -1,24 +1,30 @@
 @charset "utf-8";
 
 body {
-  background: #d4d4d4 url("../images/background.png");
+  background: #3498db;
   text-align: center;
-  font-family: sans-serif; }
+  font-family: sans-serif; 
+  color: rgba(255, 255, 255, .5);
+}
 
 h1 {
-  color: rgba(0, 0, 0, .3);
   font-weight: bold;
-  font-size: 32px;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-  background: url("../images/middleman.png") no-repeat center 100px;
+  font-size: 50px;
+  letter-spacing: 1px;
+  background: url("../images/y.png") no-repeat center 100px;
   padding: 350px 0 10px;
   margin: 0; }
 
-.doc {
-  font-size: 14px;
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+
   margin: 0; }
+
+.doc {
+  font-size: 16px;
+  margin: 20px 0; }
   .doc:before,
   .doc:after {
     opacity: .2;
@@ -27,9 +33,9 @@ h1 {
     position: relative;
     content: "•"; }
   .doc a {
-    color: rgba(0, 0, 0, 0.3); }
+    color: rgba(255, 255, 255, 0.7); }
     .doc a:hover {
-      color: #666; }
+      color: rgba(255, 255, 255, 1); }
 
 .welcome {
   -webkit-animation-name: welcome;
