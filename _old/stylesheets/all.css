@@ -490,7 +490,6 @@ th {
 
 
 body {
-  background: #3498db;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 18px;
@@ -538,6 +537,10 @@ body {
     }    
 
   .welcome {
+     background: #000 url(../images/underwater_tony.jpg) center center fixed no-repeat;
+    -moz-background-size: cover;
+    background-size: cover;
+    
     -webkit-animation-name: welcome;
     -webkit-animation-duration: .9s; }
 
