@@ -75,7 +75,9 @@ body {
    =================== */
 
 .header-container {
-    
+    background: #000 url(../img/underwater_tony.jpg) center center fixed no-repeat;
+    -moz-background-size: cover;
+    background-size: cover;    
 }
 
 .footer-container {
