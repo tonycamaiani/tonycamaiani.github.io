@@ -11,13 +11,13 @@ textarea { resize: vertical; }
 
 
 /* ===== Main Styles ================================================== */
-
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body { font: 16px/26px Helvetica, Helvetica Neue, Arial; }
 .wrapper { width: 90%; margin: 0 5%; }
 
 /* ============== MOBILE: Main ============== */
 
-.main { padding: 30px 0; }
+.main { padding: 10px 0; }
 .main article h1 { font-size: 2em; }
 .footer-container footer { color: white; padding: 20px 0; }
 /* ===============  ALL: IE Fixes =============== */
@@ -29,22 +29,21 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial; }
 
 body {
     font-family: 'Raleway', sans-serif;
-    background: #fff url(../img/tony_big.jpg) top center no-repeat;
+    background: #dedede url(../img/tony_striped.jpg) top center no-repeat;
     -moz-background-size: 100%;
     background-size: 100% ;
     line-height: 1.45;
-    background: #dedede;
 }
 
 .header-container header {
-    color: #fff;
+    color: #333;
 }
 
 .header-container header h1 { font-size: 300%; }
-.header-container header h2 { font-size: 240%; }
+.header-container header h2 { font-size: 200%; margin-left: 6.5%; }
 
 .main-container {
-    margin-top: 90px;
+    margin-top: 8%;
     background: #eee;
 }
 
@@ -71,24 +70,27 @@ body {
    ========================================================================== */
 
 @media only screen and (min-width: 480px) {
+    .main-container {
+        margin-top: 13%;
+    }
 
 }
 
 @media only screen and (min-width: 768px) {
+    .main-container {
+        margin-top: 13%;
+    }
 
-/* ====================
-    WIDE: CSS3 Effects
-   ==================== */
-
-    .header-container {
+    .main-container article section {
+        width: 32.9%;
+        padding: 2%;
+        display: inline-block;
+        vertical-align: top;
     }
 }
 
 @media only screen and (min-width: 1140px) {
 
-/* ===============
-    Maximal Width
-   =============== */
  body { 
     -moz-background-size: 1140px;
     background-size: 1140px;
@@ -98,6 +100,16 @@ body {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
     }
+
+    .header-container {
+        height: 466px;
+    }
+
+    .main-container {
+        margin-top: 0;
+    }
+
+    
 }
 
 /* ==========================================================================
