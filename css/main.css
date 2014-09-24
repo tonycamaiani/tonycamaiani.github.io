@@ -29,25 +29,29 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial; }
 
 body {
     font-family: 'Raleway', sans-serif;
-    background: #dedede url(../img/tony_striped.jpg) top center no-repeat;
-    -moz-background-size: 100%;
-    background-size: 100% ;
     line-height: 1.45;
 }
 
-.header-container header {
-    color: #333;
+.header-container {
+    margin-top: 20px;
+    border-bottom: 1px solid #efefef;
 }
 
-.header-container header h1 { font-size: 300%; }
-.header-container header h2 { font-size: 200%; margin-left: 6.5%; }
+.header-container header img { 
+    float: left;  
+    width: 18%; 
+    min-width: 98px;
+    height: auto; 
+    margin-right: 2%; 
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.header-container header h1 { font-size: 280%; margin-bottom: 10px; }
 
 .main-container {
-    margin-top: 8%;
-    background: #eee;
+    border-bottom: 1px solid #efefef;
 }
-
-
 
     .dotted:before,
     .dotted:after {
@@ -59,56 +63,24 @@ body {
     }
 
 
-
-
-
-
-
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
 @media only screen and (min-width: 480px) {
-    .main-container {
-        margin-top: 13%;
-    }
 
 }
 
 @media only screen and (min-width: 768px) {
-    .main-container {
-        margin-top: 13%;
-    }
 
-    .main-container article section {
-        width: 32.9%;
-        padding: 2%;
-        display: inline-block;
-        vertical-align: top;
-    }
 }
 
 @media only screen and (min-width: 1140px) {
-
- body { 
-    -moz-background-size: 1140px;
-    background-size: 1140px;
-  }
 
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
     }
-
-    .header-container {
-        height: 466px;
-    }
-
-    .main-container {
-        margin-top: 0;
-    }
-
     
 }
 
