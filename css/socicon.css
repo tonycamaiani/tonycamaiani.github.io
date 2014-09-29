@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'socicon';
+    src: url('../fonts/socicon-webfont.eot');
+    src: url('../fonts/socicon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/socicon-webfont.woff') format('woff'),
+         url('../fonts/socicon-webfont.ttf') format('truetype'),
+         url('../fonts/socicon-webfont.svg#sociconregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+  display: inline-block;
+  font: normal normal normal 14px/1 socicon;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon.twitter:before { content: "a"; }
+.icon.linkedin:before { content: "j"; }
+.icon.github:before { content: "Q"; }
+.icon.coderwall:before { content: "2"; }
+.icon.stack-overflow:before { content: "a"; }
+.icon.dribbble:before { content: "D"; }
+
+.icon.codepen:before { content: "a"; }
+.icon.behance:before { content: "H"; }
+
+.icon.instagram:before { content: "x"; } 
+.icon.flickr:before { content: "v"; }
+.icon.tumblr:before { content: "z"; }
+.icon.vimeo:before { content: "s"; }
+.icon.lastfm:before { content: "q"; }
+.icon.spotify:before { content: "o"; }
+
