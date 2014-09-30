@@ -30,18 +30,20 @@ body { font: 16px/26px Helvetica, Helvetica Neue, Arial; }
 body {
   font-family: 'Raleway', sans-serif;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 1);
-  background-color: #3498db;
+  background-color: #fff;
+  color: #333;
 }
 
   a {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(52, 152, 219, 1);
     font-weight: bold;
   }
 
-  a:hover { color: rgba(255, 255, 255, 0.9); }
+  a:hover { color: rgba(52, 152, 219, 0.8); }
 
   .header-container {
+    background-color: #3498db;
+    color: #fff;
     border-bottom: 3px solid rgba(255, 255, 255, 0.5);
   }
 
@@ -71,28 +73,48 @@ body {
         .header-container header h1 small { display: block; font-size: 60%; margin-bottom: 10px; }
 
   .main-container {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 3px solid rgba(52, 152, 219, 1);
+    
   }
 
   .social_links {
     margin: 25px 0;
-    font-size: 180%;
+    font-size: 120%;
   }
 
     .social_links ul { padding: 0; margin: 0; }
-    .social_links ul li { display: inline-block; padding: 0 5px; }
-    .social_links ul li a { text-decoration: none; }
+    .social_links ul li { display: inline-block; }
+    .social_links ul li a { text-decoration: none; margin: 0 12px; color: rgba(0, 0, 0, 0.6);}
+    .social_links ul li a:hover { }
 
 
     .dotted:before,
-    .dotted:after {
-     opacity: .5;
-     padding: 6px;
+    .dotted li:after {
+     opacity: .8;
      font-style: normal;
      position: relative;
      content: "•"; 
     }
 
+    .dotted li:after { padding: 0 0 0 8px;}
+
+    a.logo { margin: 10px auto;}
+
+    a.peertransfer {
+      background-image: url("../img/logo_peertransfer.png");
+      width: 265px;
+      height: 36px;
+      display: block;
+    }
+
+    a.frontenders {
+      background-image: url("../img/logo_frontenders.png");
+      width: 265px;
+      height: 110px;
+      display: block;
+    }
+
+    .footer-container { font-size: 75%; letter-spacing: 2px; margin: 0; } 
 
   .centered { text-align: center;}
 
