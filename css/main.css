@@ -78,7 +78,7 @@ body {
       content: "•"; 
     }
 
-    .dotted li:after { padding: 0 0 0 8px;}
+    .dotted li:after { padding: 0 0 0 4px;}
 
     a.logo { 
       margin: 10px auto; 
