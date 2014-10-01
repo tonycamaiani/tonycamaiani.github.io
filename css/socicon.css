@@ -24,10 +24,9 @@
 .icon.coderwall:before { content: "2"; }
 .icon.stack-overflow:before { content: "a"; }
 .icon.dribbble:before { content: "D"; }
-
 .icon.codepen:before { content: "a"; }
+.icon.lanyrd:before { content: "7"; }
 .icon.behance:before { content: "H"; }
-
 .icon.instagram:before { content: "x"; } 
 .icon.flickr:before { content: "v"; }
 .icon.tumblr:before { content: "z"; }
