@@ -20,7 +20,7 @@ body {
   color: #333;
 }
 
-  h1 { font-size: 280%; margin: 1.8% 0;}
+  h1 { font-size: 200%; margin: 1.8% 0;}
     h1 small { display: block; font-size: 60%; margin-bottom: 10px; }
     .ie7 .title { padding-top: 20px; }
 
@@ -110,6 +110,8 @@ body {
 @media only screen and (min-width: 480px) {}
 
 @media only screen and (min-width: 768px) {
+  h1 { font-size: 280%; }
+
   .main-container section div{
     width: 40%;
     margin: 0 5%;
