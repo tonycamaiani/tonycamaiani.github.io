@@ -64,7 +64,7 @@ body {
   .social_links { padding: 8px 0; }
   .social_links ul { padding: 0; margin: 0; }
   .social_links ul li { display: inline-block; }
-  .social_links ul li a { font-size: 140%; text-decoration: none; margin: 0 12px; color: rgba(255, 255, 255, 1);}
+  .social_links ul li a { font-size: 140%; text-decoration: none; margin: 0 6px; color: rgba(255, 255, 255, 1);}
   .social_links ul li a.icon { font-size: 110%; }
   .social_links ul li a:hover { color: rgba(255, 255, 255, 0.75); }
 
@@ -117,6 +117,7 @@ body {
   }
 
   .social_links { padding: 15px 0; }
+  .social_links ul li a { margin: 0 12px; }
   a.logo { width: 200px; height: 85px; }
   a.peertransfer { background-image: url("../img/logo_peertransfer_768.png"); }
   a.frontenders { background-image: url("../img/logo_frontenders_768.png"); }
