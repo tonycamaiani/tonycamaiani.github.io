@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Generating static web sites with Middleman | by Tony Camaiani @tonycamaiani</title>
+
+		<meta name="description" content="Generating static web sites with Middleman | Frontenders Valencia Enero 2015 | by Tony Camaiani @tonycamaiani">
+		<meta name="author" content="Tony Camaiani">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/tony.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Generating static web sites with</h2>
+					<h1>Middleman</h1>
+					<h3>Frontenders Valencia - Enero 2015</h3>
+					<p>
+						<small>By <a href="http://tony.camaiani.me">Tony Camaiani</a> <a href="http://twitter.com/tonycamaiani">@tonycamaiani</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Hi, I'm</h2>
+					<h1>Tony Camaiani</h1>
+					<p class="margin_bottom_20">
+						<a href="http://tony.camaiani.me">tony.camaiani.me</a>
+             			-
+						<a href="http://twitter.com/tonycamaiani">@tonycamaiani</a>
+					</p>
+
+						<div class="fragment font_60 margin_bottom_20">
+							<p class="width_33">
+			              		born
+			              		<img class="flag" width="58" height="38" src="images/flag_canada.png" alt="Canada">
+			              	</p>
+			              	<p class="width_33">
+			              		grew up
+			              		<img class="flag" width="58" height="38" src="images/flag_italy.png" alt="Italy">
+			              	</p>
+			              	<p class="width_33">
+			              		aging
+			              		<img class="flag" width="58" height="38" src="images/flag_spain.png" alt="Spain">
+			              	</p>
+			            </div>
+
+						<p class="fragment font_80 margin_bottom_20">
+							Laurea in Computer Science, University of Bologna
+							<span class="block">“Usability Guidelines and User-Centered Design“</span>
+						</p>
+						<p class="fragment margin_bottom_20">
+							Frontend Web Developer
+							<span class="font_80 block">Web Designer & UX</span>
+						</p>
+						<p class="fragment margin_bottom_20">
+							<img src="images/logo_peertransfer.png" alt="peerTransfer">
+						</p>
+						<p class="fragment">
+							<img src="images/logo_frontenders.png" alt="Frontenders">
+						</p>
+
+				</section>
+
+				<section>
+					<h2>Index</h2>
+
+					<ul>
+						<li>Old Version</li>
+						<li>Middleman</li>
+						<ul>
+							<li>Layout</li>
+							<li>Styles</li>
+							<li>Data</li>
+							<li>Config</li>
+							<li>Heroku</li>
+						</ul>
+						<li>Next Steps</li>
+					</ul>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Old Version</h2>
+
+						<ul>
+							<li>Static Html / Css</li>
+							<li>2 index.html</li>
+							<li>Copy index.html to past.html</li>
+							<li>Add talks slides</li>
+							<li>Css images for sponsors</li>
+							<li>Header and Footer duplicated</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/sshot_1_old_dir.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_index.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_past.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_css.png" alt="Frontenders">
+					</section>
+				</section>
+
+
+				<section>
+					<h2>Why change?</h2>
+
+					<ul>
+						<li>Update content more easily</li>
+						<li>Separate content from markup</li>
+						<li>No css edits</li>
+						<li>Status of Event</li>
+						<li>HAML & SASS</li>
+						<li>Common Header and Footer</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Static Site Generators</h2>
+					<p class="font_80 text_left margin_bottom_20">
+						A static-site generator simply takes your pre-compiled (and pre-processed) languages like Haml, Jade, Sass, LESS, Stylus, CoffeeScript, and others, and compiles them into the equivalent language that is understood by the browser; HTML, CSS, and JavaScript, respectively.
+						<cite><a href="http://drewbarontini.com/articles/middleman/">http://drewbarontini.com/articles/middleman/</a></cite>
+					</p>
+
+					<ul class="margin_bottom_20">
+						<li>Middleman</li>
+						<li>Jekyll</li>
+						<li>Assemble</li>
+						<li>...</li>
+						<li class="font_80">CodeKit</li>
+						<li class="font_80">Hammer</li>
+						<li class="font_80">Mixture</li>
+					</ul>
+					<p>
+						<a class="block" href="https://www.staticgen.com">https://www.staticgen.com</a>
+					</p>
+
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Middleman</h2>
+						<p><a href="https://middlemanapp.com/">middlemanapp.com</a></p>
+						<img src="images/sshot_middleman.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Middleman: Init</h2>
+
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman init new_project
+						</code></pre>
+						<img src="images/sshot_dir_new_project.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Middleman: Server</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman server
+						</code></pre>
+						<img src="images/sshot_web_new_project.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Middleman: Build</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman build
+						</code></pre>
+						<img src="images/sshot_dir_build_new_project.png" alt="Middleman">
+					</section>
+				</section>
+
+				<section>
+					<h2>Frontenders Valencia Middleman</h2>
+					<img src="images/sshot_dir_source.png" alt="Middleman">
+				</section>
+
+
+
+				<section>
+					<section>
+						<h2>Layout</h2>
+
+						<ul>
+							<li>HAML</li>
+							<li>Layouts</li>
+							<li>Partials</li>
+							<li>Pages</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Layout.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+!!!
+%html
+  %head
+    ...
+    %link{:href => "http://fonts.googleapis.com/css?family=Rambla:400,700", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag "all"
+    = javascript_include_tag  "libs/modernizr"
+
+  %body
+    = partial 'partials/header'
+    = yield
+    = partial 'partials/footer'
+    ...
+
+						</code></pre>
+
+					</section>
+
+					<section>
+						<h2>Partials: _header.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+%header
+  %hgroup
+    %h1
+      = link_to data.static[:h1_logo_text], "/", :title => data.static[:h1_title]
+      %span= data.static[:h1_logo_subtext]
+
+    %h2
+      = data.static[:h2_scream_line_1]
+      %span= data.static[:h2_scream_line_2]
+      %span= data.static[:h2_scream_line_3]
+
+    %nav
+      %ul
+        %li
+          = link_to data.static[:nav_page_1], "/frontenders.html", :title => data.static[:nav_page_1_title], :class => is_page_selected("/frontenders/")
+        %li
+          = link_to data.static[:nav_page_2], "/past.html", :title => data.static[:nav_page_2_title], :class => is_page_selected("/past/")
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Partials: _footer.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+%footer
+  .fgroup
+    .first
+      %h3= data.static[:participate]
+      %p
+        =data.static[:participate_how]
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+
+    .middle
+      %h3= data.static[:follow]
+      %p
+        = link_to "@frontendersVLC", "https://twitter.com/frontendersVLC", :title => "@frontendersVLC on Twitter", :target => "_blank"
+      %p
+        = link_to "#frontendersVLC", "https://twitter.com/search?q=%23frontendersVLC", :title => "Hashtag #frontendersVLC", :target => "_blank"
+
+    .last
+      %h3= data.static[:partner]
+      %p
+        = link_to data.static[:partner_name], data.static[:partner_url], :title => data.static[:partner_url_title], :class => "partner ir", :target => "_blank"
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>Index.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+
+---
+title: a meetup for Frontend  UI Developers, UX  Web Designers
+ready: true
+---
+...
+
+%main{:role => "main"}
+  %p.main_paragraph
+    = data.static[:main_paragraph_text_1]
+    = link_to data.static[:partner_name], data.static[:partner_url], :title => data.static[:partner_url_title], :target => "_blank"
+    = data.static[:main_paragraph_text_2]
+    = link_to data.static[:main_paragraph_link_text], "frontenders.html"
+
+  %h2.title
+    = data.static[:next_meetup]
+    %time
+      = data.static[:week_day]
+      #{date}
+      = data.static[:day_hour]
+
+  %section{:class => "#{type}"}
+
+    - homepage.talks.each do |f|
+      %article
+        %h3= f[:title]
+        - f.text.each do |t|
+          %p= t
+        - if active
+          - f.author.each do |t|
+            %p
+              = t[:name]
+              = twitter_url(t[:twitter])
+              = t[:bio]
+
+    - if homepage.sponsor
+      %div
+        %h3= data.static[:sponsor]
+        = link_to image_tag("sponsors/"+homepage.sponsor[:image]), homepage.sponsor[:url], :title => homepage.sponsor[:name], :target => "_blank"
+
+    - if active
+      .call_to_action
+        = link_to data.static[:attend_text], homepage[:eventbrite], :class => "button", :target => "_blank"
+        %small.caption= data.static[:attend_subtext]
+
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>frontenders.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: ¿Que es? Frontenders
+---
+
+%main{:role => "main"}
+  %section
+    %h2.title= data.static[:frontenders_title]
+    %p
+      %b= data.static[:frontenders_def_text_1]
+      = data.static[:frontenders_def_text_2]
+      %cite
+        =link_to data.static[:frontenders_def_source_text], data.static[:frontenders_def_source_url], :target => "_blank"
+
+    %p= data.static[:frontenders_text_1]
+    %p= data.static[:frontenders_text_2]
+    %p= data.static[:frontenders_text_3]
+
+    %p
+      = data.static[:frontenders_text_4]
+      = succeed '.' do
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>past.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: Los eventos anteriores
+---
+
+%main{:role => "main"}
+  %h2.title= data.static[:past_title]
+
+  - data.archive.meetups.each do |m|
+    %h2.section_title
+      = data.static[:week_day]
+      = m[:date]
+
+      - if m[:hangout_url]
+        = link_to m[:hangout_url], m[:hangout_url], :class=> "ico hangout", :target=> "_blank"
+
+    %section{:class => "#{m.type}"}
+      - m.talks.each do |f|
+        %article
+          %h3= f[:title]
+          - f.author.each do |t|
+            = t[:name]
+            = twitter_url(t[:twitter])
+
+          - f.text.each do |t|
+            %p= t
+
+          - if f.links
+            - f.links.each do |t|
+              %p.links
+                = link_to t[:label], t[:url], :target=> "_blank"
+
+      - if m.sponsor
+        %div
+          %h3= data.static[:sponsor]
+          = link_to image_tag("sponsors/"+m.sponsor[:image]), m.sponsor[:url], :title => m.sponsor[:name], :target=> "_blank"
+						</code></pre>
+					</section>
+				</section> <!-- Layout -->
+
+				<section>
+					<section>
+						<h2>Styles</h2>
+						<ul>
+							<li>SASS</li>
+							<li>Partials</li>
+							<li>Flexbox</li>
+							<li>Mobile First</li>
+							<li>Own breakpoints</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Styles</h2>
+						<img src="images/sshot_dir_stylesheets.png" alt="Middleman">
+					</section>
+
+
+					<section>
+						<h2>Styles: _variables.scss</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+// _varables.scss
+
+//// Basic Colors
+
+    $white: #fff;
+
+    $gray: #53585e; /* text */
+    $gray_light: #f5f5f5; /* background */
+    $gray_lighter: rgba(161, 161, 161, 0.5);
+
+    $orange: rgb(230, 126, 34);
+    $orange_light: rgb(243, 156, 18);
+    $orange_dark: rgba(211, 84, 0, 0.5);
+    $orange_darker: rgb(220, 105, 17);
+
+    $blue: #1ea0ce;
+    $blue_light: #339ACC;
+
+  //// Background Colors
+
+    $background_color_body: $gray_light;
+    $background_color_header: $orange;
+    $background_color_button: $orange_light;
+    $background_color_button_hover: $orange_dark;
+
+    $shadow_color_header: $gray_lighter;
+    $shadow_color_article: $gray_lighter;
+
+    $border_color_article: $white;
+
+
+  //// Text Colors
+
+    $text_body_color: $gray;
+    $text_header_color: $white;
+    $text_heading_color: $orange;
+    $text_link_color: $blue;
+    $text_link_hover_color: $blue_light;
+    $text_selection_color: $white;
+    $text_selection_background: $blue;
+
+    $text_button_color: $white;
+    $text_button_background: $orange;
+    $text_button_hover_background: $orange_darker;
+
+/// General Variables
+
+$font_family: 'Rambla', sans-serif;
+
+
+
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Flexbox: footer</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+footer {
+    .fgroup {
+      display: flex;
+      justify-content: center;
+
+      div {
+        margin: 0;
+        flex-grow: 1;
+        flex-basis: 0;
+
+        &.first { text-align: left;}
+        &.last { text-align: right;}
+
+      } // div
+    } // .fgroup
+  } // footer
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Flexbox: article</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+  main {
+    section {
+      article {
+        margin: 0 2% 30px;
+        p { font-size: 18px; }
+      } // article
+
+      &.double {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+
+      article {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      div { flex: 1 100%; }
+      } // section.double
+    } // section
+  } // main
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Breakpoints</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+@media only screen and (min-width: 768px) { ... }
+@media only screen and (min-width: 896px) { ... }
+@media only screen and (min-width: 1024px) { ... }
+
+						</code></pre>
+					</section>
+
+				</section> <!-- Styles -->
+
+
+				<section>
+					<section>
+						<h2>Data</h2>
+						<img src="images/sshot_dir_data.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Data: default.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetup:
+  date: "8 enero 2015"
+  type: "double"
+  talks:
+  - title: Espacio libre
+    text:
+      - ¿Tienes algo interesante que contar sobre temas de desarrollo frontend, diseño web, UI y UX y te gustaría compartirlo con nosotros?</p>
+      - Envíanos un correo a <a href="mailto:frontendersvalencia@gmail.com">frontendersvalencia@gmail.com</a> o contáctanos por <a target="_blank" href="https://twitter.com/frontendersVLC">twitter</a>
+  - title: Espacio libre
+    text:
+      - ¿Tienes algo interesante que contar sobre temas de desarrollo frontend, diseño web, UI y UX y te gustaría compartirlo con nosotros?</p>
+      - Envíanos un correo a <a href="mailto:frontendersvalencia@gmail.com">frontendersvalencia@gmail.com</a> o contáctanos por <a target="_blank" href="https://twitter.com/frontendersVLC">twitter</a>
+
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>Data: new.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetup:
+  date: "8 enero 2015"
+  type: "double"
+  eventbrite: https://frontenders-enero-2015.eventbrite.es
+  talks:
+  - title: "Generando sitios web estáticos con Middleman"
+    text:
+      - "Frontenders tiene casi dos años, ¡y también su web!. Ha llegado el momento de pasar de una Web estática a algo más ágil para actualizar la información (en casa del herrero...)."
+      - "Para ello vamos a hacer uso de “Middleman”, un generador de sitios estáticos. Hablaremos del proceso de migración y las ventajas de usar este tipos de herramientas."
+    author:
+    - name: "Tony Camaiani"
+      twitter: "tonycamaiani"
+      bio: "es Frontender en @peerTransfer & coorganizador de @frontendersVLC."
+  - title: "Diseña y venderás"
+    text:
+      - "¿Por qué un usuario entra a mi web y no sabe a donde ir? ¿Cómo consigo dar confianza a mis usuarios en una compra online? ¿Como escribo un texto persuasivo?"
+      - "Un buen diseño puede ser la clave para conseguir tu objetivo en Internet, pero no la única. Hoy hablaremos de diseño, pero también de usabilidad, de marketing y de experiencias, para responder a estas preguntas."
+    author:
+    - name: "Juanma Martínez"
+      twitter: "juanmamartinez"
+      bio: "es Web Designer & UX en @Increnta, agencia especializada en Inbound Marketing y Marketing Digital."
+  sponsor:
+    name: "Kuombo - Consultoría y desarrollo de comercio electrónico"
+    url: "http://kuombo.com/"
+    image: "logo_kuombo.png"
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Data: archive.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetups:
+  - meetup:
+    date: "13 noviembre 2014"
+    hangout_url: "https://plus.google.com/u/0/events/c43la6lak11lgpo6g7q6bgumfpc"
+    type: double
+    talks:
+    - title: "¿Comprar online es una experiencia? UX para ecommerce"
+      text:
+        - "El comercio online es un mercado durísimo donde las empresas invierten multitud de recursos para crear experiencias seductoras que les diferencien de la competencia."
+        - "En esta charla aprenderemos los secretos para crear experiencias enfocadas en el usuario de ecommerce, y sacarles provecho para convertirlas en propuestas de valor que ayuden a alcanzar el objetivo de cualquier negocio online: vender más."
+      links:
+      - url: "/slides/Dani_Frontenders_UX_ecommerce.pdf"
+        label: "slides &raquo;"
+      author:
+      - name: "Dani Catalan"
+        twitter: "dani_catalan"
+        bio: "es Desarrollador Frontend en @kuombo, agencia especializada en el desarrollo del negocio de tiendas online."
+    - title: "Maquetación con Flexbox"
+      text:
+        - 'CSS empezó con mal pie cuando nos dio el "float" como medio de distribución de elementos y luego lo intentó arreglar con "display: table".'
+        - 'Pero ahora tenemos el módulo de Flexbox, con el que podemos maquetar con propiedades simples e intuitivas (o no) alterando los espacios entre objetos y el tamaño de los objetos en si. Vamos a dar un paseo por sus posibilidades y sintaxis.'
+      links:
+      - url: "/slides/Wakkos_Frontenders_Flexbox.pdf"
+        label: "slides &raquo;"
+      author:
+      - name: "Daniel Martínez"
+        twitter: "Wakkos"
+        bio: "es Frontend y tutor/profesor de Arquitectura CSS y responsive design en @EscuelaIt y @vadeclases."
+
+  - meetup:
+    date: "11 septiembre 2014"
+    hangout_url: "https://plus.google.com/events/cp3jjqh3uo7a33e684u5938olik"
+    type: single
+    talks:
+    - title: "Angularjs y su magia"
+      text:
+        - "Esta charla va a contener dos partes enlazadas en las que explicaremos qué es Angularjs y cuáles son sus bases y principios sobre los que se apoya. La idea está especialmente recomendada a gente poca experiencia o que quiera comenzar en breve. Aquí aprenderemos tips & tricks sobre cómo funciona y cómo utilizarla mejor."
+        - "En la segunda parte subiremos un poco el nivel y la orientaremos más a gente con experiencia en angular, aunque los más neófitos podrán ver qué pueden conseguir. En ella entraremos a ver la potencia que proporciona Angularjs y mostraremos un ejemplo de una aplicación web empresarial con muy pocas líneas de javascript, ¿o conseguiremos no escribir ninguna? Todo un reto :-)"
+      links:
+      - url: "http://www.slideshare.net/pedrohurtadocandel/angularjs-36566730"
+        label: "slides &raquo;"
+      author:
+      - name: "Pedro Hurtado Candel"
+        twitter: "_PedroHurtado"
+        bio: "es un truhan y un señor. Trabaja en .Net y últimamente en JavaScript y Angularjs. Administrador del foro de c# de msdn."
+      - name: "Xavier Jorge Cerdá"
+        twitter: "XaviPaper"
+        bio: "es Ingeniero Informático por la UPV y  CTO de Ami2. Vinculado a proyectos de I+D+i con universidades, trabaja .Net y últimamente en Angularjs."
+    sponsor:
+      name: "http://allstartup.es/"
+      url: "ALL STARTUP | El evento de selección de emprendedores de momentum"
+      image: "logo_momentum.png"
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Data: static.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+# Header
+h1_title: "Frontenders Valencia"
+h1_logo_text: "&lt;frontenders/&gt;"
+h1_logo_subtext: "Valencia"
+h2_scream_line_1: "a meetup for"
+h2_scream_line_2: "Frontend & UI Developers,"
+h2_scream_line_3: "UX & Web Designers"
+nav_page_1: "¿Que es?"
+nav_page_1_title: "¿Que es Frontenders?"
+nav_page_2: "Anteriores"
+nav_page_2_title: "Los eventos anteriores"
+
+# Footer
+participate: "Participa"
+participate_how: "¿Quieres participar en una de las próximas reuniones? Escribe a"
+participate_email: "frontendersvalencia@gmail.com"
+follow: "Síguenos"
+partner: "Partner"
+partner_name: "GeeksHubs"
+partner_url: "http://geekshubs.com/es/?utm_source=comunidades&utm_medium=web&utm_campaign=frontenders"
+partner_url_title: "Comunidad Geek y Emprendedores techies"
+
+# Index
+main_paragraph_text_1: "Frontenders es una reunión mensual centrada en temas de desarrollo frontend, diseño web, UI y UX. Nos encontramos regularmente el segundo jueves de cada mes en el espacio de coworking"
+main_paragraph_text_2: ", en Avenida Cataluña, 11 (Valencia)."
+main_paragraph_link_text: "¿Quieres saber más?"
+next_meetup: "Próximo meetup:"
+week_day: "jueves"
+day_hour: ", 19:00h"
+sponsor: "Patrocinador"
+attend_text: "Asistiré al Frontenders Valencia"
+attend_subtext: "Por cuestiones de aforo nos gustaría saber el numero de asistentes."
+
+# What is
+frontenders_title: "¿Qué es Frontenders Valencia?"
+frontenders_def_text_1: "“The front end is an interface"
+frontenders_def_text_2: "between the user and the back end.”"
+frontenders_def_source_text: "Wikipedia"
+frontenders_def_source_url: "http://en.wikipedia.org/wiki/Front_and_back_ends"
+frontenders_text_1: "Esta definición resume en muy pocas palabras lo que entendemos por <em>frontender</em> la persona que se ocupa de la interfaz, en nuestro caso, de aplicaciones web."
+frontenders_text_2: "En Frontenders Valencia trataremos temas en los que arte, diseño, interacción, programación y análisis del comportamiento y de las prestaciones confluyen."
+frontenders_text_3: "Dos charlas de aproximadamente media hora, donde alguien presenta un tema, por conocimiento o por experiencia, y los demás intervienen con sus consejos o preguntas, ya que las reuniones pretenden ser diálogos donde todos puedan aportar y aprender."
+frontenders_text_4: "Por eso, pedimos a todos los interesados que propongan nuevas charlas y participen activamente en los próximos meetups. Si eres desarollador frontend, experto en UI y UX, o diseñador web y quieres colaborar con nosotros escríbenos a"
+
+# Past
+past_title: "Meetups anteriores"
+
+						</code></pre>
+					</section>
+
+				</section> <!-- Data -->
+
+				<section>
+					<section>
+						<h2>Using the data</h2>
+						<p>index.haml</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: a meetup for Frontend  UI Developers, UX  Web Designers
+ready: true
+---
+
+- active = current_page.data.ready
+
+- if active
+  - homepage = data.new.meetup
+- else
+  - homepage = data.default.meetup
+
+- date = homepage.date
+- type = homepage.type
+						</code></pre>
+
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+- homepage.talks.each do |f|
+  %article
+    %h3= f[:title]
+    - f.text.each do |t|
+      %p= t
+    - if active
+      - f.author.each do |t|
+        %p
+          = t[:name]
+          = twitter_url(t[:twitter])
+          = t[:bio]
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Using the data</h2>
+						<p>frontenders.haml</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+%main{:role => "main"}
+  %section
+    %h2.title= data.static[:frontenders_title]
+    %p
+      %b= data.static[:frontenders_def_text_1]
+      = data.static[:frontenders_def_text_2]
+      %cite
+        =link_to data.static[:frontenders_def_source_text], data.static[:frontenders_def_source_url], :target => "_blank"
+
+    %p= data.static[:frontenders_text_1]
+    %p= data.static[:frontenders_text_2]
+    %p= data.static[:frontenders_text_3]
+
+    %p
+      = data.static[:frontenders_text_4]
+      = succeed '.' do
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+						</code></pre>
+
+					</section>
+				</section> <!-- Using the data -->
+
+
+				<section>
+					<section>
+						<h2>Config: config.rb</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+activate :livereload
+
+set :css_dir, 'stylesheets'
+set :js_dir, 'javascripts'
+set :images_dir, 'images'
+set :haml, { :ugly => true, :format => :html5 }
+
+activate :directory_indexes
+
+# Build-specific configuration
+configure :build do
+
+  activate :minify_css
+  activate :minify_javascript
+  activate :asset_hash
+end
+
+						</code></pre>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+helpers do
+  def is_page_selected(page)
+    current_page.url == page ? "selected" : ''
+  end
+
+  def twitter_url(username)
+    "<a target='_blank' href='https://twitter.com/#{username}'>@#{username}</a>"
+  end
+end
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Config: config.ru</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+require "rubygems"
+
+require "rack"
+require "middleman/rack"
+require "rack/contrib/try_static"
+
+map "/" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/index.html', File::RDONLY)
+    ]
+  }
+end
+
+map "/frontenders.html" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/frontenders.html', File::RDONLY)
+    ]
+  }
+end
+
+map "/past.html" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/past.html', File::RDONLY)
+    ]
+  }
+end
+
+run lambda { |env|
+  [
+    404,
+    {
+      "Content-Type" => "text/html",
+      "Cache-Control" => "public, max-age=60"
+    },
+    File.open("build/404.html", File::RDONLY)
+  ]
+}
+
+						</code></pre>
+					</section>
+				</section> <!-- Config -->
+
+				<section>
+					<section>
+						<h2>Deploy a Heroku</h2>
+						<p class="font_80"><a href="http://www.randomerrata.com/articles/2013/middleman-on-heroku/">http://www.randomerrata.com/articles/2013/middleman-on-heroku/</a></p>
+
+						<p>Gemfile</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+source 'http://rubygems.org'
+
+ruby "2.0.0"
+
+gem "middleman", "~>3.0.13"
+gem "rack-contrib"
+gem "puma"
+
+						</code></pre>
+						<p>Config.ru</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+# Build the static site when the app boots
+`bundle exec middleman build`
+
+# Enable proper HEAD responses
+use Rack::Head
+# Attempt to serve static HTML files
+use Rack::TryStatic,
+    :root => "build",
+    :urls => %w[/],
+    :try => ['.html', 'index.html', '/index.html']
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Deploy a Heroku</h2>
+						<p class="font_80"><a href="http://www.randomerrata.com/articles/2013/middleman-on-heroku/">http://www.randomerrata.com/articles/2013/middleman-on-heroku/</a></p>
+
+						<p>Procfile</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+web: bundle exec puma -p $PORT -e $RACK_ENV
+						</code></pre>
+
+
+						<p>...set up Heroku and</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+git push heroku master
+						</code></pre>
+
+					</section>
+				</section> <!-- Heroku  -->
+
+
+				<section>
+					<h2>Next Steps</h2>
+					<ul>
+						<li>SVG</li>
+						<li>Social Icon Font</li>
+						<li>More generic</li>
+						<li>...suggestions?</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h1 class="margin_bottom_40">That's all, Folks!</h1>
+					<p class="margin_bottom_40">
+						<h3>Repo</h3>
+						<a href="https://github.com/frontenders/valencia-middleman">https://github.com/frontenders/valencia-middleman</a>
+					</p>
+					<p class="margin_bottom_40">
+						<h3>These slides</h3>
+						<a href="http://tony.camaiani.me/frontenders-middleman-talk">http://tony.camaiani.me/frontenders-middleman-talk</a>
+						<small>made with <a href="http://lab.hakim.se/reveal-js/#/">reveal.js</a></small>
+					</p>
+
+					<h2>Any question?</h2>
+				</section>
+
+				<section>
+					<h1 class="margin_bottom_40">Thanks!</h1>
+					<img src="images/mecartoon.jpg" alt="Tony Camaiani">
+					<h2>Tony Camaiani</h2>
+
+					<p>
+						<a href="http://tony.camaiani.me">tony.camaiani.me</a>
+             			-
+						<a href="http://twitter.com/tonycamaiani">@tonycamaiani</a>
+					</p>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
