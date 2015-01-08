@@ -169,6 +169,7 @@ body {
 .reveal section .width_33 img { display: block; margin: 5px auto;}
 
 .reveal section .font_80 { font-size: 80%; }
+.reveal section .font_65 { font-size: 65%; }
 .reveal section .font_60 { font-size: 60%; }
 .reveal section .font_40 { font-size: 40%; }
 .reveal section .font_20 { font-size: 20%; }
