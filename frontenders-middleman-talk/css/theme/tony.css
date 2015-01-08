@@ -155,12 +155,16 @@ body {
     vertical-align: middle;
   }
 
+.reveal section ul li {
+  line-height: 60px; 
+}
 
 .reveal section cite { font-style: italic; font-size: 80%; display: block;}
 
 .reveal pre code { max-height: 500px; }
 
 
+.reveal section .width_25 { width: 25%; float: left; text-align: center; }
 .reveal section .width_33 { width: 33%; float: left; text-align: center; }
 .reveal section .width_33 img { display: block; margin: 5px auto;}
 
